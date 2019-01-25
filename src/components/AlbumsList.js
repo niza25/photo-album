@@ -10,6 +10,5 @@ export default function AlbumsList(props) {
           <li key={album.id}>{album.title}</li>
         )}
       </ul>
-
     </div>)
 }

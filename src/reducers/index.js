@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import album from './album'
+import albums from './album'
 
-// combines reducers (in other .js files)
+// combines reducers (in other .js files), names of the part of the state
 export default combineReducers({
-  album
+  albums
 })
