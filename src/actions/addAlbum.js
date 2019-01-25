@@ -4,8 +4,18 @@ export function addAlbum(title, id) {
   return {
     type: ADD_ALBUM,
     payload: {
-      title: title,
-      id: id
+      title,
+      id
     }
   }
 }
+
+/* export const addAlbum = (title, id) => {
+  return {
+    type: ADD_ALBUM,
+    payload: {
+      title,
+      id
+    }
+  }
+} */

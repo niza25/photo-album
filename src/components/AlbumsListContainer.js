@@ -2,24 +2,22 @@ import * as React from 'react'
 import * as request from 'superagent'
 import AlbumsList from './AlbumsList'
 import { connect } from 'react-redux';
-import { helloWorld } from '../actions/test'
-import { addAlbum } from '../actions/addAlbum'
-import { setAlbum } from '../actions/setAlbum'
+import { helloWorld } from '../actions/test';
+import { addAlbum } from '../actions/addAlbum';
+import { setAlbum } from '../actions/setAlbum';
+
 
 class AlbumsListContainer extends React.Component {
   
   componentDidMount() {
+
     request('https://jsonplaceholder.typicode.com/albums')
       .then(response => {
-        response.body.map(({ title, id }) => {
-         this.props.addAlbum(title, id)
-        })
-      }
-        )
+        this.props.setAlbum(response.body)
+      })
 // I'm using imported helloWorld to dispatch my action
-      this.props.helloWorld('Alice', 'McDog');
-      this.props.addAlbum('Enjoying sunshine', 5);
-      this.props.addAlbum('Having fun in the US', 10);
+// it's wrapped in dispatch becuase of connect - dispatches immediately to reducer
+
   }
 
   render() {
@@ -30,7 +28,6 @@ class AlbumsListContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.album)
   return {
     albums: state.albums
   }
